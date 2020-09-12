@@ -22,14 +22,14 @@ fi
 #creating the input directory
 mkdir input
 
-#add feature to detect if output directory is present and overwrite it
-if [ -z"$output" ] || [ -d"$output" ]
+#feature to detect if output directory is present and overwrite it
+if [ -z "$output" ] || [ -d "$output" ]
 	then
 	echo "Removing directory $output/..."
 	rm -r $output
 fi
 
-#creating the ouput directory
+#creating the output directory
 mkdir output
 
 #input of number of test files
@@ -46,7 +46,7 @@ read sourceFile
 
 #checking if the generation file is present
 found=$(ls -a | grep $generationFile)
-if [ ! -z"$found" ] || [ ! -x"$found" ]
+if [ ! -z "$found" ] || [ ! -x "$found" ]
 	then
 	echo "Test generation file does not exist..."
 	exit 1
