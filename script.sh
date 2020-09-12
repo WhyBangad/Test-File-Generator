@@ -13,7 +13,7 @@ input=$(ls -a | grep input)
 output=$(ls -a | grep output)
 
 #Detect if input directory is present and overwrite it
-if [ -z"$input" ] && [ -d"$input" ]
+if [ ! -z "$input" ] && [ -d "$input" ]
 	then
 	echo "Removing directory $input/..."
 	rm -r $input
@@ -23,8 +23,8 @@ fi
 mkdir input
 
 #feature to detect if output directory is present and overwrite it
-if [ -z "$output" ] || [ -d "$output" ]
-	then
+if [ ! -z "$output" ] && [ -d "$output" ]
+	then 
 	echo "Removing directory $output/..."
 	rm -r $output
 fi
@@ -46,7 +46,7 @@ read sourceFile
 
 #checking if the generation file is present
 found=$(ls -a | grep $generationFile)
-if [ ! -z "$found" ] || [ ! -x "$found" ]
+if [ -z "$found" ] || [ -x "$found" ]
 	then
 	echo "Test generation file does not exist..."
 	exit 1
@@ -55,7 +55,7 @@ fi
 #checking if the source code file is present
 
 found=$(ls -a | grep $sourceFile)
-if [ ! -z"$found" ] || [ ! -x"$found" ] 
+if [ -z "$found" ] || [ -x "$found" ] 
 	then
 	echo "Source code file does not exist..."
 	exit 1
