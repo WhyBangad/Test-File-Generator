@@ -46,7 +46,7 @@ read sourceFile
 
 #checking if the generation file is present
 found=$(ls -a | grep $generationFile)
-if [ -z "$found" ] || [ -x "$found" ]
+if [ -z "$found" ] || [ ! -x "$found" ]
 	then
 	echo "Test generation file does not exist..."
 	exit 1
@@ -55,7 +55,7 @@ fi
 #checking if the source code file is present
 
 found=$(ls -a | grep $sourceFile)
-if [ -z "$found" ] || [ -x "$found" ] 
+if [ -z "$found" ] || [ ! -x "$found" ] 
 	then
 	echo "Source code file does not exist..."
 	exit 1
